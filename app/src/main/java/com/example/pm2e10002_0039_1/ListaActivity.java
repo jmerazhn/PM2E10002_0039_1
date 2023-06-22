@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,8 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +37,7 @@ public class ListaActivity extends AppCompatActivity {
     private Button btnBack, btnShare, btnViewImage, btnDelete, btnUpdate;
     private ListView listContactos;
     private int valSelected=-1;
+    private byte[] blobData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,36 @@ public class ListaActivity extends AppCompatActivity {
         btnViewImage=findViewById(R.id.btnVerImagen);
         btnDelete=findViewById(R.id.btnEliminar);
         btnUpdate=findViewById(R.id.btnActualizar);
+
+
+        btnViewImage.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("Range")
+            @Override
+            public void onClick(View v) {
+                String selectedText= (String) listContactos.getItemAtPosition(valSelected).toString();
+                String[] vals= selectedText.split("-");
+                String part1=vals[0];
+/*
+                String where="id=?";
+                String[] argumentosWhere = {part1};
+                String columnaBlob = "imagen";
+
+                SQLiteDatabase db = conexion.getReadableDatabase();
+                Cursor cursor=db.query(Transactions.TablaContactos,new String[]{columnaBlob},where, argumentosWhere,null,null,null);
+                if (cursor.moveToFirst()) {
+                    blobData = cursor.getBlob(cursor.getColumnIndex(columnaBlob));
+                    cursor.close();
+                }
+*/
+
+                Intent intent = new Intent(getApplicationContext(), ImagenActivity.class);
+                intent.putExtra("id",part1);
+                startActivity(intent);
+
+
+
+            }
+        });
 
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override

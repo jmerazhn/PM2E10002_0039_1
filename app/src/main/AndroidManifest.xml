@@ -10,7 +10,7 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -23,8 +23,11 @@
         android:theme="@style/Theme.PM2E10002_0039_1"
         tools:targetApi="31">
         <activity
+            android:name=".ImagenActivity"
+            android:exported="true" />
+        <activity
             android:name=".ListaActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".PrincipalActivity"
             android:exported="true">
@@ -36,9 +39,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
