@@ -132,7 +132,7 @@ public class PrincipalActivity extends AppCompatActivity {
         valores.put(Transactions.telefonoC, txtTelefono.getText().toString());
         valores.put(Transactions.notaC, txtNota.getText().toString());
         valores.put(Transactions.paisC, lista.getSelectedItem().toString());
-        valores.put(Transactions.imagenC, byteArray.toString());
+        valores.put(Transactions.imagenC, byteArray);
 
         try {
             Long result = db.insert(Transactions.TablaContactos, Transactions.idC, valores);
