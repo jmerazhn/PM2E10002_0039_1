@@ -40,6 +40,9 @@ public class Transactions {
     public static final String SelectTableContactos = "SELECT c.id, c.nombre, c.telefono, c.nota, c.pais, c.imagen FROM "+TablaContactos+" c";
 
 
+    private static final String DeleteRowContactos = "DELETE FROM "+TablaContactos+" where id="+idC;
+
+
 
 
 
